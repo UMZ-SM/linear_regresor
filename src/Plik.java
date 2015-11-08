@@ -3,6 +3,7 @@ import java.nio.file.Files;
 import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import org.jblas.*;
 
 public class Plik {
 	public static double [][] new_data;
@@ -70,9 +71,13 @@ public class Plik {
 	    }
 	    
 	    public static double [] MatrixNormal(double [][] new_data) {
-	    	DoubleMatrix X = new DoubleMatrix(new_data);
-	    	DoubleMatrix X_t = X.transpose();
-	    	DoubleMatrix theta_M=(X.mmul(X_t));
+	    	ComplexDoubleDoubleMatrix X = new ComplexDoubleDoubleMatrix(new_data);
+	    	ComplexDoubleDoubleMatrix X_t = X.transpose();
+	    	ComplexDoubleDoubleMatrix theta_M=((X.mmul(X_t)).pinv).mmul(X_t);
+	    	//trzeba jeszcze theta_M przemno¿yæ przez wektor y ale zapomnia³em czym on jest
+	    	double [] theta= new double [2];
+	    	theta[1]=theta_M.get(1);
+	    	theta[1]=theta_M.get(2);
 	    	return theta;
 	    }
 }
