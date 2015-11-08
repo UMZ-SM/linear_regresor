@@ -7,12 +7,14 @@ import java.util.Arrays;
 public class Plik {
 	public static double [][] new_data;
 	public static ArrayList<String> data;
+	public static double [] theta;
 	
 	 public static void main(String[] args) {
 	        String nazwaPliku = "train.csv";
 	        data = odczytajPlik(nazwaPliku);
 	        new_data=konwersja(data);
 	        zapiszPlik(nazwaPliku, new_data);
+	        theta = MatrixNormal(new_data);
 	    }
 	 
 	    public static void zapiszPlik(String nazwaPliku, double[][] dane) {
@@ -65,5 +67,12 @@ public class Plik {
 	            nrLinii++;
 	        }
 	        return daneOdczytane;
+	    }
+	    
+	    public static double [] MatrixNormal(double [][] new_data) {
+	    	DoubleMatrix X = new DoubleMatrix(new_data);
+	    	DoubleMatrix X_t = X.transpose();
+	    	DoubleMatrix theta_M=(X.mmul(X_t));
+	    	return theta;
 	    }
 }
