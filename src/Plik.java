@@ -1,8 +1,11 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
+
 import org.jblas.*;
 
 public class Plik {
@@ -13,7 +16,12 @@ public class Plik {
 	
 	 public static void main(String[] args) {
 	        String nazwaPliku = "train.csv";
-	        data = odczytajPlik(nazwaPliku);
+	        try {
+				data = odczytajPli();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	        new_data=konwersja(data);
 	        zapiszPlik(nazwaPliku, new_data);
 	        theta = thetaFun(new_data);
@@ -39,6 +47,17 @@ public class Plik {
 	        } catch (IOException ex) {
 	            System.out.println("Nie mogê zapisaæ pliku!");
 	        }
+	    }
+	    
+	    public static ArrayList<String> odczytajPli() throws FileNotFoundException {
+	        ArrayList<String> odczytuje = new ArrayList<String>();
+	        File csv = new File("train.csv");
+			Scanner odczyt = new Scanner(csv);
+			
+	        while(odczyt.hasNextLine()){
+	        	odczytuje.addAll(new ArrayList<String>(Arrays.asList(odczyt.nextLine().split(","))));
+	        	}
+	        return odczytuje;
 	    }
 	        
 	    public static ArrayList<String> odczytajPlik(String nazwaPliku) {
