@@ -84,11 +84,11 @@ public class Plik {
 	    
 	    public static double [] thetaFun (double [][] new_data){
 	    	// przepisanie mew_data na macierz
-	    	ComplexDoubleMatrix X = new ComplexDoubleMatrix(new_data);
+	    	DoubleMatrix X = new DoubleMatrix(new_data);
 	    	// stworzenie macierzy transponowonej new_data
-	    	ComplexDoubleMatrix X_t = X.transpose();
+	    	DoubleMatrix X_t = X.transpose();
 	    	// Macierz thetaM jest przedstawieniem wspó³czynników w postaci macierzowej
-	    	ComplexDoubleMatric thetaM = (((X_t.mmul(X)).pinv()).mmul(X_t)).mmul(y);
+	    	DoubleMatric thetaM = (((X_t.mmul(X)).pinv()).mmul(X_t)).mmul(y);
 	    	
 	    	//nie pamiêtam czym jest y
 	    	// podejrzenia ¿ê wektor y jest:
