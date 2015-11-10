@@ -24,8 +24,6 @@ public class Plik {
 		 for(int i=0;i<theta.length;i++){
 			 System.out.println("theta =");System.out.println(theta[i]);
 		 }
-		 
-	     
 	 }
 	 
 	    public static void zapiszPlik(String nazwaPliku, double[][] dane) {
