@@ -55,7 +55,7 @@ public class Plik {
 			Scanner odczyt = new Scanner(csv);
 			
 	        while(odczyt.hasNextLine()){
-	        	odczytuje.addAll(new ArrayList<String>(Arrays.asList(odczyt.nextLine().split(","))));
+	        	odczytuje.addAll(new ArrayList<String>(Arrays.asList(odczyt.nextLine())));
 	        	}
 	        return odczytuje;
 	    }
