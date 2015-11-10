@@ -17,9 +17,13 @@ public class Plik {
 	        new_data=konwersja(data);
 	        zapiszPlik(nazwaPliku, new_data);
 	        theta = thetaFun(new_data);
+	        wynik(theta);
 	    }
 	 
-	 public static void wynik(String nazwaout){
+	 public static void wynik(double []theta){
+		 for(int i=0;i<theta.length;i++){
+			 System.out.println("theta =");System.out.println(theta[i]);
+		 }
 		 
 	     
 	 }
