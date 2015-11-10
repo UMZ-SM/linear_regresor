@@ -19,6 +19,11 @@ public class Plik {
 	        theta = thetaFun(new_data);
 	    }
 	 
+	 public static void wynik(String nazwaout){
+		 
+	     
+	 }
+	 
 	    public static void zapiszPlik(String nazwaPliku, double[][] dane) {
 	        Path sciezka = Paths.get(nazwaPliku);
 	        ArrayList<String> out = new ArrayList<>();
@@ -87,8 +92,9 @@ public class Plik {
 	    	DoubleMatrix X = new DoubleMatrix(new_data);
 	    	// stworzenie macierzy transponowonej new_data
 	    	DoubleMatrix X_t = X.transpose();
+	    	DoubleMatrix y_m = new DoubleMatrix(y);
 	    	// Macierz thetaM jest przedstawieniem wspó³czynników w postaci macierzowej
-	    	DoubleMatric thetaM = (((X_t.mmul(X)).pinv()).mmul(X_t)).mmul(y);
+	    	DoubleMatrix thetaM = (Solve.pinv(((X_t.mmul(X)))).mmul(X_t)).mmul(y_m);
 	    	
 	    	//nie pamiêtam czym jest y
 	    	// podejrzenia ¿ê wektor y jest:
